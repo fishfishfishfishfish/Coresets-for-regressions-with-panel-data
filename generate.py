@@ -36,8 +36,8 @@ def generate_panel(N,T,k,q,d,lam):
         temp_rho = generate_rho(q,lam)
         rho.append(temp_rho)
 
-    panel1 = np.array([[[1.0 for fea in range(d)] for t in range(T)] for i in range(N)])
-    panel2 = np.array([[[1.0 for fea in range(d)] for t in range(T)] for i in range(N)])
+    panel1 = np.array([[[1.0 for fea in range(d)] for t in range(T)] for i in range(N)]) # 高斯误差版
+    panel2 = np.array([[[1.0 for fea in range(d)] for t in range(T)] for i in range(N)]) # Cauchy误差版
     mean = [0 for i in range(d-2)]
     cov = np.identity(d-2)
 
@@ -69,7 +69,9 @@ def generate_panel(N,T,k,q,d,lam):
             panel1[i][t][d-1] = np.dot(panel1[i][t][0:d-1],beta[cluster[i]]) + error_i[t]
         # Cauchy error
         error_i = []
-        error_basic = cauchy.rvs(0, 2, T)  # errors drawn from Cauchy distribution with x0 = 0 and gamma = 2
+        error_basic = cauchy.rvs(loc=0, scale=2, size=T)  # errors drawn from Cauchy distribution with x0 = 0 and gamma = 2
+        if isinstance(error_basic, int):
+            raise ValueError("Cauchy distributionvs() must return an array-like object")
         for t in range(T):
             error_i.append(error_basic[t])
             for tt in range(min(t-1,q)):

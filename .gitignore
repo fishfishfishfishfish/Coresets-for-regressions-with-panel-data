@@ -1,0 +1,6 @@
+*.csv
+*.dat
+*.npy
+*.pyc
+
+__pycache__/

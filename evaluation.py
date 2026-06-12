@@ -22,8 +22,8 @@ def evaluate_glse(panel,q,lam,times):
     evaluate_uniform1 = []
     # evaluate_uniform2 = []
     size_glse = []
-    construction_time_glse = [0 for i in range(len(eps))]
-    opt_time_glse = [0 for i in range(len(eps))]
+    construction_time_glse = [0.0 for i in range(len(eps))]
+    opt_time_glse = [0.0 for i in range(len(eps))]
 
     # opt_uniform1 = []
     # opt_uniform2 = []
@@ -112,8 +112,8 @@ def evaluate_glsek(panel,k,q,lam,times):
     evaluate_uniform1 = []
     # evaluate_uniform2 = []
     size_glsek = []
-    construction_time_glsek = [0 for i in range(len(eps))]
-    opt_time_glsek = [0 for i in range(len(eps))]
+    construction_time_glsek = [0.0 for i in range(len(eps))]
+    opt_time_glsek = [0.0 for i in range(len(eps))]
 
     # opt_uniform1 = []
     # opt_uniform2 = []
